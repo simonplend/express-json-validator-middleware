@@ -32,7 +32,7 @@ import { Validator } from "express-json-validator-middleware";
 /**
  * Define a JSON schema.
  */
- const addressSchema = {
+const addressSchema = {
   type: "object",
   required: ["street"],
   properties: {
@@ -68,6 +68,29 @@ app.post("/address", validate({ body: addressSchema }), (request, response) => {
 ```
 
 Coming from `express-jsonschema`? Read the [migration notes](docs/migrating-from-express-jsonschema.md).
+
+### Schemas in TypeScript
+
+If you are writing JSON schemas in TypeScript, you will need to cast your schema
+to the `const` type e.g.
+
+```typescript
+const addressSchema = {
+  type: "object",
+  required: ["street"],
+  properties: {
+    street: {
+      type: "string",
+    }
+  },
+} as const;
+```
+
+This is required so that TypeScript doesn't attempt to widen the types of values
+in the schema object. If you omit the `as const` statement TypeScript will raise
+a compilation error. The discussion in
+[this issue](https://github.com/simonplend/express-json-validator-middleware/issues/39)
+provides further background.
 
 ## Error handling
 
