@@ -27,9 +27,6 @@
 		"prepublish": "npm run lint && npm run test"
 	},
 	"types": "src/index.d.ts",
-	"mocha": {
-		"timeout": 15000
-	},
 	"devDependencies": {
 		"codecov": "^3.8.1",
 		"eslint": "^6.8.0",
