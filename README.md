@@ -281,7 +281,7 @@ You have to manually configure Ajv to support **draft-06** schemas
 
 ## Tests
 
-Tests are written using Mocha & Chai.
+Tests are written using [node-tap](https://www.npmjs.com/package/tap).
 
 ```
 npm install

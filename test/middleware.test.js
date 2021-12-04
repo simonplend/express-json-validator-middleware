@@ -5,6 +5,7 @@ const { Validator, ValidationError } = require("../src");
 test("Validator#validate middleware configured with a schema object", async t => {
 	const middleware = new Validator().validate({
 		body: {
+			type: "object",
 			required: ["name"],
 			properties: {
 				name: {
@@ -42,6 +43,7 @@ test("Validator#validate middleware configured with a schema object", async t =>
 test("Validator#validate middleware configured with a dynamic schema function", async t => {
 	function getSchema() {
 		return {
+			type: "object",
 			properties: {
 				name: {
 					type: "string"
