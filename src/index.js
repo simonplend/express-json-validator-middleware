@@ -1,4 +1,4 @@
-var Ajv = require("ajv");
+const Ajv = require("ajv");
 
 /**
  * Express middleware for validating requests
