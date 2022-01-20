@@ -71,11 +71,13 @@ Coming from `express-jsonschema`? Read the [migration notes](docs/migrating-from
 
 ### Schemas in TypeScript
 
-If you are writing JSON schemas in TypeScript, you will need to cast your schema
-to the `const` type e.g.
+If you're writing JSON schemas in TypeScript, you'll need to use the
+`AllowedSchema` type e.g.
 
 ```typescript
-const addressSchema = {
+import { AllowedSchema } from "express-json-validator-middleware";
+
+const addressSchema: AllowedSchema  = {
   type: "object",
   required: ["street"],
   properties: {
@@ -83,14 +85,15 @@ const addressSchema = {
       type: "string",
     }
   },
-} as const;
+};
 ```
 
-This is required so that TypeScript doesn't attempt to widen the types of values
-in the schema object. If you omit the `as const` statement TypeScript will raise
-a compilation error. The discussion in
-[this issue](https://github.com/simonplend/express-json-validator-middleware/issues/39)
-provides further background.
+This is required so TypeScript doesn't attempt to widen the types of values
+in the schema object. If you omit this type, TypeScript will raise an error.
+
+See issues [#39](https://github.com/simonplend/express-json-validator-middleware/issues/39)
+and [#102](https://github.com/simonplend/express-json-validator-middleware/issues/102)
+for more background.
 
 ## Error handling
 
