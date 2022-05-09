@@ -45,6 +45,9 @@
 		"@types/json-schema": "^7.0.4",
 		"ajv": "^8.8.2"
 	},
+	"engines": {
+		"node": ">=14"
+	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
