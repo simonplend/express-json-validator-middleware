@@ -11,12 +11,11 @@ requests against JSON schemas with Ajv.
 
 ## Why validate with JSON schemas?
 
-- **Simple** - JSON schemas are a simple and expressive way to describe a data structure.
-- **Standard** - JSON schemas are not specific to JavaScript. In fact, they are used just about everywhere.
-- **Fail-Fast** - Catch errors early in your logic, evading confusing errors later.
-- **Separate Validation** - Keep your routes clean. Validation logic doesn't need to be defined in your route handlers.
-- **Error Messaging** - Ajv provides you with rich error objects that can easily be transformed into human-readable format.
-- **Documentation** - Creating a JSON Schema is another way of documenting your application.
+- **Expressive** — JSON schemas are an expressive way to describe data structures.
+- **Standard** — JSON schemas are portable. There are validator implementations in many languages.
+- **Separate validation** — Avoid the need to handle request validation in your route handlers.
+- **Error messaging** — Ajv provides rich and descriptive error objects.
+- **Documentation** — Schemas can help document your application.
 
 ## Requirements
 
