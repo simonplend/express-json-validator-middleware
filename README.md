@@ -1,7 +1,7 @@
 # Express JSON Validator Middleware
 
 > [Express](https://github.com/expressjs/express/) middleware for validating
-requests against JSON schemas.
+requests against JSON schemas with Ajv.
 
 [![npm version](https://img.shields.io/npm/v/express-json-validator-middleware.svg)](https://www.npmjs.com/package/express-json-validator-middleware)
 [![npm monthly downloads](https://img.shields.io/npm/dm/express-json-validator-middleware.svg)](https://www.npmjs.com/package/express-json-validator-middleware)
@@ -27,6 +27,8 @@ requests against JSON schemas.
 ```sh
 npm install express-json-validator-middleware
 ```
+
+If you're upgrading from v2 to v3, make sure you read the [migration notes](#upgrading-from-v2-to-v3).
 
 ## Getting started
 
@@ -277,14 +279,23 @@ validator.ajv;
 Ajv must be configured *before* you call `Validator.validate()` to add middleware
 (e.g. if you need to define [custom keywords](https://ajv.js.org/custom.html).
 
-## Ajv versions
+## Upgrading from v2 to v3
 
-The major version `1.x` of this module uses `ajv@5`, read their changelog and
-migration guide [here](https://github.com/ajv-validator/ajv/releases/tag/5.0.0).
+v2.x releases of this library use [Ajv v6](https://www.npmjs.com/package/ajv/v/6.6.2).
+v3.x of this library uses [Ajv v8](https://www.npmjs.com/package/ajv/v/8.11.0).
 
-Major version `2.x` uses `ajv@6` in order to support draft-07 of JSON Schema.
-You have to manually configure Ajv to support **draft-06** schemas
-(see https://github.com/ajv-validator/ajv/tree/v6#using-version-6).
+Notable changes between Ajv v6 and v8:
+
+- All formats have been moved to [ajv-formats](https://www.npmjs.com/package/ajv-formats).
+If you're using formats in your schemas, you must install this package to continue
+using them.
+- The structure of validation errors has changed.
+- Support has been dropped for JSON Schema draft-04.
+
+For full details, read the Ajv migration guide: [Changes from Ajv v6.12.6 to v8.0.0](https://ajv.js.org/v6-to-v8-migration.html).
+
+If you have any Ajv plugins as dependencies, update them to their newest versions.
+Older versions of Ajv plugins are less likely to be compatible with Ajv v8.
 
 ## Tests
 
@@ -292,6 +303,7 @@ Tests are written using [node-tap](https://www.npmjs.com/package/tap).
 
 ```
 npm install
+
 npm test
 ```
 
