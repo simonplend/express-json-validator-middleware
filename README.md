@@ -18,7 +18,11 @@ requests against JSON schemas.
 - **Error Messaging** - Ajv provides you with rich error objects that can easily be transformed into human-readable format.
 - **Documentation** - Creating a JSON Schema is another way of documenting your application.
 
-## Install
+## Requirements
+
+- [Node.js](https://nodejs.org/en/download/) >= v14
+
+## Installation
 
 ```sh
 npm install express-json-validator-middleware
