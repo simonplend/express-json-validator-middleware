@@ -1,7 +1,7 @@
 import { Request } from "express";
 import { RequestHandler } from "express-serve-static-core";
 import { JSONSchema4, JSONSchema6, JSONSchema7 } from "json-schema";
-import { Ajv, ErrorObject, Options as AjvOptions } from "ajv";
+import Ajv, { ErrorObject, Options as AjvOptions } from "ajv";
 
 declare module "express-json-validator-middleware" {
 	type OptionKey = "body" | "params" | "query";
