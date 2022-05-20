@@ -21,7 +21,7 @@ declare module "express-json-validator-middleware" {
 		| AllowedSchema;
 
 	export class Validator {
-		constructor(options: AjvOptions);
+		constructor(ajvInstanceOrOptions: Ajv | AjvOptions);
 
 		ajv: Ajv;
 

@@ -6,8 +6,12 @@ const Ajv = require("ajv");
  * @class Validator
  */
 class Validator {
-	constructor(ajvOptions) {
-		this.ajv = new Ajv(ajvOptions);
+	constructor(ajvInstanceOrOptions) {
+		if (!(ajvInstanceOrOptions instanceof Ajv)) {
+			ajvInstanceOrOptions = new Ajv(ajvInstanceOrOptions);
+		}
+
+		this.ajv = ajvInstanceOrOptions;
 		this.validate = this.validate.bind(this);
 	}
 
