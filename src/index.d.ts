@@ -8,6 +8,7 @@ declare module "express-json-validator-middleware" {
 
 	type List<T> = {
 		[K in OptionKey]?: T;
+		statusCode?: number;
 	};
 
 	type AllowedSchema =

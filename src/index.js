@@ -23,6 +23,7 @@ class Validator {
 
 		// Cache validate functions
 		const validateFunctions = Object.keys(options)
+			.filter(option => ["body", "params", "query"].includes(option))
 			.map(function(
 				requestProperty
 				) {
@@ -58,7 +59,8 @@ class Validator {
 			}
 
 			if (Object.keys(validationErrors).length !== 0) {
-				next(new ValidationError(validationErrors));
+				const statusCode = Number(options.statusCode) || 422;
+				next(new ValidationError(validationErrors, statusCode));
 			} else {
 				next();
 			}
@@ -73,10 +75,11 @@ class Validator {
  * @extends {Error}
  */
 class ValidationError extends Error {
-	constructor(validationErrors) {
+	constructor(validationErrors, statusCode) {
 		super();
 		this.name = "JsonSchemaValidationError";
 		this.validationErrors = validationErrors;
+		this.statusCode = statusCode;
 	}
 }
 

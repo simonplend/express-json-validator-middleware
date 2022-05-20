@@ -22,12 +22,12 @@ test("Express app route using Validator#validate middleware", async t => {
 		}
 	};
 
-	app.post("/user", validate({ body: userSchema }), (request, response) => {
+	app.post("/user", validate({ body: userSchema, statusCode: 400 }), (request, response) => {
 		response.json({ success: true });
 	});
 
 	app.use(function errorHandlerMiddleware(error, request, response, next) {
-		response.status(400).json(error);
+		response.status(error.statusCode).json(error);
 	});
 
 	t.before(() => {
