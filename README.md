@@ -49,7 +49,7 @@ const addressSchema = {
 
 /**
  * Initialize a `Validator` instance, optionally passing in
- * an Ajv options object.
+ * an Ajv options object or an Ajv instance.
  *
  * @see https://github.com/ajv-validator/ajv/tree/v6#options
  */
