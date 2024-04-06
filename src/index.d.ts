@@ -1,7 +1,8 @@
 import { Request } from "express";
 import { RequestHandler } from "express-serve-static-core";
 import { JSONSchema4, JSONSchema6, JSONSchema7 } from "json-schema";
-import Ajv, { ErrorObject, Options as AjvOptions } from "ajv";
+import { ErrorObject, Options as AjvOptions } from "ajv";
+import AjvCore from "ajv/lib/core";
 
 declare module "express-json-validator-middleware" {
 	type OptionKey = "body" | "params" | "query";
@@ -20,9 +21,9 @@ declare module "express-json-validator-middleware" {
 		| AllowedSchema;
 
 	export class Validator {
-		constructor(options: AjvOptions);
+		constructor(options: AjvOptions | AjvCore);
 
-		ajv: Ajv;
+		ajv: AjvCore;
 
 		validate(rules: List<ValidateFunction>): RequestHandler;
 	}
