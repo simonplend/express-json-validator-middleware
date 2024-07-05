@@ -77,12 +77,14 @@ Coming from `express-jsonschema`? Read the [migration notes](docs/migrating-from
 ### Schemas in TypeScript
 
 If you're writing JSON schemas in TypeScript, you'll need to use the
-`AllowedSchema` type e.g.
+`AllowedSchema` type and this can be combined with [ajv's recommended `JSONSchemaType` type](https://ajv.js.org/guide/typescript.html) e.g.
 
 ```typescript
+import { JSONSchemaType } from "ajv";
 import { AllowedSchema } from "express-json-validator-middleware";
 
-const addressSchema: AllowedSchema  = {
+type Address = { street: string; };
+const addressSchema: AllowedSchema & JSONSchemaType<Address> = {
   type: "object",
   required: ["street"],
   properties: {
